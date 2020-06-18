@@ -1,0 +1,111 @@
+<mat-tab-group mat-align-tabs="start">
+  <mat-tab label="Add category">
+    <div class="container">
+      <form action="/action_page.php">
+        <div class="row">
+          <div class="col-25">
+            <label for="Category Name">Category Name</label>
+          </div>
+          <div class="col-75">
+            <input
+              type="text"
+              id="categoryname"
+              name="categoryname"
+              [(ngModel)]="categoryNameData.categoryname"
+              placeholder="category name.."
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <input type="submit" (click)="addcategoryName()" value="Submit" />
+        </div>
+      </form>
+    </div>
+  </mat-tab>
+  <mat-tab label="Add Product">
+    <div class="container">
+      <form action="/action_page.php">
+        <div class="row">
+          <div class="col-25">
+            <label for="productname">product Name</label>
+          </div>
+          <div class="col-75">
+            <input
+              type="text"
+              id="productname"
+              name="productname"
+              placeholder="Product name.."
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+            <label for="productprice">Product price</label>
+          </div>
+          <div class="col-75">
+            <input
+              type="number"
+              id="productname"
+              name="productname"
+              placeholder="Product price.."
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+            <label for="category">Category</label>
+          </div>
+          <div class="col-75">
+            <select id="country" name="country">
+              <option value="australia">Electronics</option>
+              <option value="canada">Mens wear</option>
+              <option value="usa">Makeup</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="subject">Description</label>
+          </div>
+          <div class="col-75">
+            <textarea
+              id="subject"
+              name="subject"
+              placeholder="Write something about the product.."
+              style="height: 200px;"
+            ></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <input type="submit" value="Submit" />
+        </div>
+      </form></div
+  ></mat-tab>
+  <mat-tab label="View Products">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        alt="Photo of a Shiba Inu"
+      />
+      <mat-card-content>
+        <p>
+          The Shiba Inu is the smallest of the six original and distinct spitz
+          breeds of dog from Japan. A small, agile dog that copes very well with
+          mountainous terrain, the Shiba Inu was originally bred for hunting.
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>Buy</button>
+      </mat-card-actions>
+    </mat-card></mat-tab
+  >
+</mat-tab-group>
