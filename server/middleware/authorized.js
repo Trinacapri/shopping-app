@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 // }
 
 const authorize = async (req, res, next) => {
-  const token = req.headers.authorization; 
+  const token = req.headers.authorization;
   if (token) {
     const decoded = await jwt.verify(token, "secretkey");
     req.userId = decoded.userId;
@@ -15,4 +15,4 @@ const authorize = async (req, res, next) => {
   }
 };
 
-module.exports = authorize
+module.exports = authorize;

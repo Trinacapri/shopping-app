@@ -23,5 +23,4 @@ export class AuthService {
   addcategory(categoryname) {
     return this.http.post<any>(this._addcategoryUrl, categoryname);
   }
- 
 }
