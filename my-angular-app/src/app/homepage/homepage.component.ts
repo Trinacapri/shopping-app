@@ -10,6 +10,11 @@ export class HomepageComponent implements OnInit {
   categoryNameData = {
     categoryname: String,
   };
+  productNameData = {
+    productname: String,
+    productprice: Number,
+    productdescription: String,
+  };
   constructor(private _authService: AuthService, private _router: Router) {}
 
   ngOnInit(): void {}
@@ -17,10 +22,24 @@ export class HomepageComponent implements OnInit {
     this._authService.addcategory(this.categoryNameData).subscribe(
       (res) => {
         console.log(res);
-        
+
         localStorage.setItem("token", res.token);
       },
       (err) => console.log(err)
     );
+  }
+  addproductName() {
+    this._authService.addproduct(this.productNameData).subscribe(
+      (res) => {
+        console.log(res);
+
+        localStorage.setItem("token", res.token);
+      },
+      (err) => console.log(err)
+    );
+  }
+  logoutUser() {
+    localStorage.removeItem("token");
+    this._router.navigate(["/login"]);
   }
 }
