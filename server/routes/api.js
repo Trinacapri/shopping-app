@@ -76,6 +76,7 @@ router.get("/category", authorize, async (req, res) => {
 router.post("/product", authorize, productValidation, async (req, res) => {
   try {
     const newProduct = new Product(req.body);
+    console.log("hi");
     const product = await newProduct.save(); // new category saved in database
     res.status(200).json(product); //converting into json
   } catch (e) {
