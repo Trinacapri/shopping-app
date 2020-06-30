@@ -7,6 +7,7 @@ const PORT = 5000; //on 3000 port the express server is running on
 const app = express(); //create an instance if express
 const api = require("./routes/api");
 app.use(bodyParser.json()); //specify the bodyparser to handle the json data
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors());
 
 const db =

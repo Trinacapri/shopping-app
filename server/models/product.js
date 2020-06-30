@@ -2,10 +2,22 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const productSchema = new Schema({
   //create a new schema for product
-  // categoryid: String,
   productname: String,
-  productprice: Number,
+  productprice: String,
+  productdiscount: String,
+  productpriceWithDiscount: String,
+  productdoseInMG: String,
+  productmgfdate: String,
+  productexpiredate: String,
   productdescription: String,
+  productimage: String,
+
+  categoryid: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "categories",
+    required: true,
+  },
+
   // isActive: Boolean,
 });
 

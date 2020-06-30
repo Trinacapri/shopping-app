@@ -86,6 +86,13 @@ input[type="submit"]:hover {
 .card button:hover {
   opacity: 0.7;
 }
+
+
+/*product add*/
+
+h1{
+  text-align: center
+}
 /* 
 admin profile card */
 

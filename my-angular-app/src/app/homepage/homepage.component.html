@@ -23,98 +23,222 @@
       </form>
     </div>
   </mat-tab>
+  <mat-tab label="View categories">
+    <div class="container">
+      <br /><br /><br />
+      <h1>Category List</h1>
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ct of cat; let index = index">
+            <td>{{ index + 1 }}</td>
+            <td>{{ ct.categoryname }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-tab>
   <mat-tab label="Add Product">
     <div class="container">
-      <form action="/action_page.php">
-        <div class="row">
-          <div class="col-25">
-            <label for="productname">product Name</label>
+      <br /><br /><br />
+      <h1>Add Product</h1>
+
+      <div class="col-md-3"></div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for=""> Product Name</label>
+            <input [(ngModel)]="productname" type="text" class="form-control" />
           </div>
-          <div class="col-75">
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="">Product Price</label>
             <input
+              [(ngModel)]="productprice"
               type="text"
-              id="productname"
-              name="productname"
-              [(ngModel)]="productNameData.productname"
-              placeholder="Product name.."
+              class="form-control"
             />
           </div>
         </div>
+      </div>
 
-        <div class="row">
-          <div class="col-25">
-            <label for="productprice">Product price</label>
-          </div>
-          <div class="col-75">
+      <div class="col-md-3"></div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="">Product Discount</label>
             <input
-              type="number"
-              id="productname"
-              name="productprice"
-              [(ngModel)]="productNameData.productprice"
-              placeholder="Product price.."
+              [(ngModel)]="productdiscount"
+              type="text"
+              class="form-control"
             />
           </div>
         </div>
 
-        <!-- <div class="row">
-          <div class="col-25">
-            <label for="categorytype">Category Type</label>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="">Price with Discount</label>
+            <input
+              [(ngModel)]="productpriceWithDiscount"
+              type="text"
+              class="form-control"
+            />
           </div>
-          <div class="col-75">
-            <select id="country" name="country">
-              <option value="australia">Electronics</option>
-              <option value="canada">Mens wear</option>
-              <option value="usa">Makeup</option>
+        </div>
+      </div>
+
+      <div class="col-md-3"></div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="">Does in MG</label>
+            <input
+              [(ngModel)]="productdoseInMG"
+              type="text"
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="">MGF Date</label>
+            <input
+              [(ngModel)]="productmgfdate"
+              type="date"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3"></div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="">Expire Date</label>
+            <input
+              [(ngModel)]="productexpiredate"
+              type="date"
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="">Add Image</label>
+            <input
+              (change)="onSelectImage($event)"
+              type="file"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3"></div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="">Category</label>
+            <select [(ngModel)]="categoryid" class="form-control">
+              <option *ngFor="let c of cat" [value]="c._id">{{
+                c.categoryname
+              }}</option>
             </select>
           </div>
-        </div> -->
-        <div class="row">
-          <div class="col-25">
-            <label for="productdescription">Description</label>
-          </div>
-          <div class="col-75">
+        </div>
+      </div>
+
+      <div class="col-md-3"></div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for=""> Product Description</label>
             <textarea
-              id="productdescription"
-              name="productdescription"
-              [(ngModel)]="productNameData.productdescription"
-              placeholder="Write something about the product.."
-              style="height: 200px;"
+              [(ngModel)]="productdescription"
+              class="form-control"
+              rows="4"
             ></textarea>
           </div>
         </div>
-        <div class="row">
-          <input type="submit" (click)="addproductName()" value="Submit" />
+      </div>
+
+      <div class="col-md-3"></div>
+      <div class="row">
+        <div class="col-md-3">
+          <button (click)="addProduct()" class="btn btn-success">Add</button>
         </div>
-      </form></div
-  ></mat-tab>
+      </div>
+    </div></mat-tab
+  >
   <mat-tab label="View Products">
-    <div class="card">
-      <img
-        src="data:image/jpeg;base64,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"
-        alt="Denim Jeans"
-        style="width: 100%;"
-      />
-      <h1>Lakme Absolute</h1>
-      <p class="price">rs. 500/-</p>
-      <p>
-        Some text about the jeans. Super slim and comfy lorem ipsum lorem
-        jeansum. Lorem jeamsun denim lorem jeansum.
-      </p>
-      <p><button>Add to Cart</button></p>
-    </div>
-    <div class="card">
-      <img
-        src="data:image/jpeg;base64,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"
-        alt="Denim Jeans"
-        style="width: 100%;"
-      />
-      <h1>Lakme Absolute</h1>
-      <p class="price">rs. 500/-</p>
-      <p>
-        Some text about the jeans. Super slim and comfy lorem ipsum lorem
-        jeansum. Lorem jeamsun denim lorem jeansum.
-      </p>
-      <p><button>Add to Cart</button></p>
+    <div class="container">
+      <!-- <br /><br /><br />
+
+      <h1>Product List</h1>
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>price</th>
+            <th>discount</th>
+            <th>priceWithDiscount</th>
+            <th>DoesInMG</th>
+            <th>MgfDate</th>
+            <th>Expiredate</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let pr of products; let index = index">
+            <td>{{ index + 1 }}</td>
+            <td>
+              <img
+                class="thumbnail"
+                src="http://localhost:4000/{{ pr.image }}"
+                alt=""
+              />
+            </td>
+            <td>{{ pr.name }}</td>
+            <td>{{ pr.price }}</td>
+            <td>{{ pr.discount }}</td>
+            <td>{{ pr.priceWithDiscount }}</td>
+            <td>{{ pr.doseInMG }}</td>
+            <td>{{ pr.mgfdate }}</td>
+            <td>{{ pr.expiredate }}</td>
+            <td>{{ pr.description }}</td>
+            <td>
+              <button (click)="ondelete(pr.id)" class="btn btn-danger">
+                <i class="glyphicon glyphicon-trash"></i>
+              </button>
+              <button
+                (click)="onSelect(pr.id)"
+                class="btn btn-warning"
+                style="margin-left: 10px;"
+              >
+                <i class="glyphicon glyphicon-pencil"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
     </div>
   </mat-tab>
   <mat-tab label="Admin Profile">
@@ -127,7 +251,6 @@
       <h1>John Doe</h1>
       <p class="title">Hello Admin</p>
 
-     
       <p><button (click)="logoutUser()">Log Out</button></p>
     </div>
   </mat-tab>
